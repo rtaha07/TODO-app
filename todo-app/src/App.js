@@ -15,7 +15,7 @@ function App() {
   // when the app loads, we need to listen to the database and fetch new todos as they get added/removes
   useEffect(() => {
     //this code here... fires when the app.js loads
-    //return () => {
+
     db.collection('todos')
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
@@ -24,9 +24,7 @@ function App() {
           snapshot.docs.map((doc) => ({ id: doc.id, task: doc.data().task }))
         );
       });
-    //};
   }, []);
-  //console.log(`My today's task: ${input}`);
 
   const addTodo = (event) => {
     // this will fire off when we click the button
@@ -45,7 +43,6 @@ function App() {
       <h1>Hello Friends!</h1>
 
       <form>
-        {/* <input /> */}
         <FormControl>
           <InputLabel>Write a Todo</InputLabel>
           <Input
@@ -62,7 +59,6 @@ function App() {
         >
           Add Todo
         </Button>
-        {/* <button></button> */}
       </form>
 
       <ul>
